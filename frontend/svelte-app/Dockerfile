@@ -1,6 +1,12 @@
 FROM node:20
-COPY package*.json ./
-RUN npm install
+WORKDIR /app
+
 COPY . .
+RUN npm install
+RUN npm run build
+RUN npm prune --production # Remove dev dependencies
+
 EXPOSE 5000
-CMD ["npm", "run", "dev"]
+ENV HOST=0.0.0.0
+
+CMD [ "npm", "start" ]
