@@ -12,7 +12,7 @@ app.use('/search/client', createProxyMiddleware({
     target: 'http://microservice1:3001',
     changeOrigin: true,
     pathRewrite: {
-        '^/search/client': '/'
+        '^/search/client': ''
     },
     onProxyReq: (proxyReq, req, res) => {
         if (req.query.name) {
